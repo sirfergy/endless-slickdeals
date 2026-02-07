@@ -30,6 +30,12 @@ cd endless-slickdeals
 npm install
 ```
 
+3. (Optional) Configure environment variables:
+```bash
+cp .env.example .env
+# Edit .env to customize settings
+```
+
 ## Usage
 
 ### Development Mode
@@ -88,6 +94,24 @@ Fetch deals with pagination.
 ### GET /api/health
 
 Health check endpoint.
+
+## Configuration
+
+The application supports the following environment variables:
+
+- `PORT` - Server port (default: 3000)
+- `USE_MOCK` - Set to `true` to use mock data instead of scraping (default: false)
+
+Create a `.env` file from `.env.example` to customize these settings.
+
+## Development
+
+The application includes mock data for testing when the real website is unavailable or for development purposes. If the scraper fails to fetch data from slickdeals.net, it automatically falls back to mock data.
+
+To force using mock data:
+```bash
+USE_MOCK=true npm run dev
+```
 
 ## Project Structure
 
