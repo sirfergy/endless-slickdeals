@@ -4,6 +4,7 @@ class EndlessSlickdeals {
     this.currentPage = 1;
     this.isLoading = false;
     this.hasMore = true;
+    this.SCROLL_THRESHOLD_PX = 500; // Pixels from bottom to trigger load
     this.dealsContainer = document.getElementById('deals-container');
     this.loadingElement = document.getElementById('loading');
     this.errorElement = document.getElementById('error');
@@ -22,7 +23,7 @@ class EndlessSlickdeals {
   handleScroll() {
     // Check if user has scrolled near bottom
     const scrollPosition = window.innerHeight + window.scrollY;
-    const threshold = document.documentElement.scrollHeight - 500;
+    const threshold = document.documentElement.scrollHeight - this.SCROLL_THRESHOLD_PX;
     
     if (scrollPosition >= threshold && !this.isLoading && this.hasMore) {
       this.loadDeals();

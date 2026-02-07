@@ -35,7 +35,7 @@ app.get('/api/deals', async (req: Request, res: Response) => {
       try {
         deals = await scraperService.fetchDeals(page);
       } catch (scraperError) {
-        console.log('Real scraper failed, using mock data:', scraperError instanceof Error ? scraperError.message : scraperError);
+        console.log(`Real scraper failed for page ${page}, using mock data:`, scraperError instanceof Error ? scraperError.message : scraperError);
         deals = await mockService.fetchDeals(page);
       }
     }

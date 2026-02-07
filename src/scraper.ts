@@ -47,8 +47,8 @@ export class SlickdealsScraperService {
         
         if (!title || !dealUrl) return;
         
-        // Extract ID from URL
-        const idMatch = dealUrl.match(/\/f\/(\d+)/);
+        // Extract ID from URL (e.g., /f/12345 or /forums/showthread.php?t=12345)
+        const idMatch = dealUrl.match(/\/f\/(\d+)/) || dealUrl.match(/[?&]t=(\d+)/);
         const id = idMatch ? idMatch[1] : `deal-${page}-${index}`;
         
         // Extract price information
