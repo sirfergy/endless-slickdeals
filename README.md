@@ -38,6 +38,33 @@ cp .env.example .env
 
 ## Usage
 
+### Docker Deployment (Recommended)
+
+The easiest way to deploy the application is using Docker:
+
+1. Build and run with Docker Compose:
+```bash
+docker-compose up -d
+```
+
+Or build and run with Docker directly:
+```bash
+# Build the image
+docker build -t endless-slickdeals .
+
+# Run the container
+docker run -d -p 3000:3000 --name endless-slickdeals endless-slickdeals
+```
+
+The application will be available at `http://localhost:3000`
+
+2. Stop the container:
+```bash
+docker-compose down
+# or
+docker stop endless-slickdeals
+```
+
 ### Development Mode
 
 Run the development server with auto-reload:
