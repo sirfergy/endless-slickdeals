@@ -28,22 +28,16 @@ app.get('/api/deals', async (req: Request, res: Response) => {
     
     let deals;
     
-    // Try real scraper first, fall back to mock data
     if (USE_MOCK) {
       deals = await mockService.fetchDeals(page);
     } else {
-      try {
-        deals = await scraperService.fetchDeals(page);
-      } catch (scraperError) {
-        console.log(`Real scraper failed for page ${page}, using mock data:`, scraperError instanceof Error ? scraperError.message : scraperError);
-        deals = await mockService.fetchDeals(page);
-      }
+      deals = await scraperService.fetchDeals(page);
     }
     
     res.json({
       page,
       deals,
-      hasMore: deals.length > 0 // Simple check - if we got deals, there might be more
+      hasMore: deals.length > 0
     });
   } catch (error) {
     console.error('Error in /api/deals:', error);

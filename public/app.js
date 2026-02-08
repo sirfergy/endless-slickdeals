@@ -100,13 +100,13 @@ class EndlessSlickdeals {
       html += `<div class="price">${this.escapeHtml(deal.price)}</div>`;
     }
     
-    // Add metadata (votes and comments)
+    // Add metadata (votes, views, and comments)
     html += `
       <div class="meta">
         <div class="votes">
           <span class="vote-count thumbs-up">👍 ${deal.thumbsUp || 0}</span>
-          <span class="vote-count thumbs-down">👎 ${deal.thumbsDown || 0}</span>
         </div>
+        <span class="comments">👁️ ${(deal.views || 0).toLocaleString()}</span>
         <span class="comments">💬 ${deal.comments || 0}</span>
       </div>
     `;
