@@ -8,13 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install all dependencies (including dev dependencies for building)
-RUN npm install
+RUN npm ci
 
 # Copy source code
 COPY . .
 
 # Build TypeScript
-RUN npm run build
+RUN npx tsc
 
 # Production stage
 FROM node:20-alpine
@@ -26,7 +26,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install production dependencies only
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
