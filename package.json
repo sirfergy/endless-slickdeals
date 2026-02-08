@@ -1,6 +1,6 @@
 {
   "name": "endless-slickdeals",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Endless scrolling viewer for Slickdeals.net deals",
   "main": "src/server.ts",
   "scripts": {

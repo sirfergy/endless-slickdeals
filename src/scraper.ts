@@ -13,6 +13,8 @@ export interface Deal {
   comments: number;
   views: number;
   timestamp: string;
+  createdAt?: string;
+  lastCommentedAt?: string;
   category?: string;
 }
 
@@ -76,11 +78,19 @@ export class SlickdealsScraperService {
       const replies = parseInt($(cells[0]).text().trim().replace(/,/g, '')) || 0;
       const views = parseInt($(cells[1]).text().trim().replace(/,/g, '')) || 0;
 
-      // Timestamp from post date cell
+      // Timestamp from post date cell (thread creation date)
       const postDateCell = $el.find('td[id^="td_postdate_"] .smallfont');
       const dateText = postDateCell.contents().first().text().trim();
       const timeText = postDateCell.find('.time').text().trim();
       const timestamp = timeText ? `${dateText} ${timeText}` : dateText;
+      const createdAt = timestamp;
+
+      // Last post / last comment date (6th td, 0-indexed)
+      const lastPostTd = $el.find('td').eq(6);
+      const lastPostCell = lastPostTd.find('.smallfont');
+      const lastDateText = lastPostCell.contents().first().text().trim();
+      const lastTimeText = lastPostCell.find('.time').text().trim();
+      const lastCommentedAt = lastTimeText ? `${lastDateText} ${lastTimeText}` : lastDateText || undefined;
 
       deals.push({
         id: threadId,
@@ -94,6 +104,8 @@ export class SlickdealsScraperService {
         comments: replies,
         views,
         timestamp,
+        createdAt,
+        lastCommentedAt,
         category,
       });
     });

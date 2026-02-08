@@ -13,11 +13,26 @@ class EndlessSlickdeals {
   }
   
   init() {
+    // Load version
+    this.loadVersion();
+    
     // Load initial deals
     this.loadDeals();
     
     // Set up infinite scroll
     window.addEventListener('scroll', () => this.handleScroll());
+  }
+  
+  async loadVersion() {
+    try {
+      const response = await fetch('/api/version');
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('version').textContent = `v${data.version}`;
+      }
+    } catch (e) {
+      // ignore
+    }
   }
   
   handleScroll() {
@@ -110,6 +125,18 @@ class EndlessSlickdeals {
         <span class="comments">💬 ${deal.comments || 0}</span>
       </div>
     `;
+    
+    // Add timestamps (created and last commented)
+    if (deal.createdAt || deal.lastCommentedAt) {
+      html += `<div class="timestamps">`;
+      if (deal.createdAt) {
+        html += `<span class="timestamp-item">📅 Posted: ${this.escapeHtml(deal.createdAt)}</span>`;
+      }
+      if (deal.lastCommentedAt) {
+        html += `<span class="timestamp-item">💬 Last comment: ${this.escapeHtml(deal.lastCommentedAt)}</span>`;
+      }
+      html += `</div>`;
+    }
     
     card.innerHTML = html;
     return card;

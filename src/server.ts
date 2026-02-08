@@ -1,8 +1,11 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
+import { readFileSync } from 'fs';
 import { SlickdealsScraperService } from './scraper';
 import { MockDataService } from './mockData';
+
+const pkg = JSON.parse(readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -51,6 +54,11 @@ app.get('/api/deals', async (req: Request, res: Response) => {
 // Health check endpoint
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'ok' });
+});
+
+// Version endpoint
+app.get('/api/version', (req: Request, res: Response) => {
+  res.json({ version: pkg.version });
 });
 
 // Start server

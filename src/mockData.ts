@@ -13,7 +13,9 @@ export class MockDataService {
       thumbsUp: 450,
       comments: 89,
       views: 3200,
-      timestamp: '2 hours ago'
+      timestamp: '2 hours ago',
+      createdAt: '02-05-2026 10:30 AM',
+      lastCommentedAt: '02-07-2026 08:15 AM'
     },
     {
       id: '2',
@@ -26,7 +28,9 @@ export class MockDataService {
       thumbsUp: 823,
       comments: 156,
       views: 8500,
-      timestamp: '4 hours ago'
+      timestamp: '4 hours ago',
+      createdAt: '02-03-2026 02:15 PM',
+      lastCommentedAt: '02-07-2026 06:45 AM'
     },
     {
       id: '3',
@@ -38,7 +42,9 @@ export class MockDataService {
       thumbsUp: 612,
       comments: 234,
       views: 5400,
-      timestamp: '6 hours ago'
+      timestamp: '6 hours ago',
+      createdAt: '02-01-2026 09:00 AM',
+      lastCommentedAt: '02-07-2026 04:30 AM'
     },
     {
       id: '4',
@@ -51,7 +57,9 @@ export class MockDataService {
       thumbsUp: 389,
       comments: 67,
       views: 2100,
-      timestamp: '8 hours ago'
+      timestamp: '8 hours ago',
+      createdAt: '02-06-2026 11:00 AM',
+      lastCommentedAt: '02-07-2026 02:10 AM'
     },
     {
       id: '5',
@@ -64,7 +72,9 @@ export class MockDataService {
       thumbsUp: 567,
       comments: 145,
       views: 4700,
-      timestamp: '10 hours ago'
+      timestamp: '10 hours ago',
+      createdAt: '02-04-2026 08:45 AM',
+      lastCommentedAt: '02-06-2026 11:55 PM'
     },
     {
       id: '6',
@@ -77,7 +87,9 @@ export class MockDataService {
       thumbsUp: 712,
       comments: 198,
       views: 6300,
-      timestamp: '12 hours ago'
+      timestamp: '12 hours ago',
+      createdAt: '02-02-2026 03:30 PM',
+      lastCommentedAt: '02-06-2026 09:20 PM'
     },
     {
       id: '7',
@@ -90,7 +102,9 @@ export class MockDataService {
       thumbsUp: 423,
       comments: 87,
       views: 3100,
-      timestamp: '14 hours ago'
+      timestamp: '14 hours ago',
+      createdAt: '02-05-2026 06:00 PM',
+      lastCommentedAt: '02-06-2026 07:45 PM'
     },
     {
       id: '8',
@@ -103,7 +117,9 @@ export class MockDataService {
       thumbsUp: 501,
       comments: 123,
       views: 4200,
-      timestamp: '16 hours ago'
+      timestamp: '16 hours ago',
+      createdAt: '02-03-2026 10:15 AM',
+      lastCommentedAt: '02-06-2026 05:30 PM'
     },
     {
       id: '9',
@@ -116,7 +132,9 @@ export class MockDataService {
       thumbsUp: 634,
       comments: 167,
       views: 5800,
-      timestamp: '18 hours ago'
+      timestamp: '18 hours ago',
+      createdAt: '01-30-2026 01:00 PM',
+      lastCommentedAt: '02-06-2026 03:15 PM'
     },
     {
       id: '10',
@@ -129,7 +147,9 @@ export class MockDataService {
       thumbsUp: 289,
       comments: 54,
       views: 1900,
-      timestamp: '20 hours ago'
+      timestamp: '20 hours ago',
+      createdAt: '02-06-2026 07:30 AM',
+      lastCommentedAt: '02-06-2026 01:00 PM'
     }
   ];
 
