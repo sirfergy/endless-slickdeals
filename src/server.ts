@@ -14,8 +14,22 @@ const USE_MOCK = process.env.USE_MOCK === 'true';
 // Enable CORS
 app.use(cors());
 
+// Disable caching for HTML files (Safari is aggressive about caching)
+app.use((req, res, next) => {
+  if (req.path === '/' || req.path.endsWith('.html')) {
+    res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+  }
+  next();
+});
+
 // Serve static files from public directory
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public'), {
+  etag: true,
+  lastModified: true,
+  maxAge: 0,
+}));
 
 const scraperService = new SlickdealsScraperService();
 const mockService = new MockDataService();
