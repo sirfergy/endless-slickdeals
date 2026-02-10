@@ -4,6 +4,7 @@ class EndlessSlickdeals {
     this.currentPage = 1;
     this.isLoading = false;
     this.hasMore = true;
+    this.seenIds = new Set();
     this.SCROLL_THRESHOLD_PX = 500; // Pixels from bottom to trigger load
     this.dealsContainer = document.getElementById('deals-container');
     this.loadingElement = document.getElementById('loading');
@@ -85,6 +86,9 @@ class EndlessSlickdeals {
   
   renderDeals(deals) {
     deals.forEach(deal => {
+      const key = deal.id || deal.url;
+      if (this.seenIds.has(key)) return;
+      this.seenIds.add(key);
       const card = this.createDealCard(deal);
       this.dealsContainer.appendChild(card);
     });
