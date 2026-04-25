@@ -24,6 +24,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/api', (_req, res, next) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  res.set('Surrogate-Control', 'no-store');
+  next();
+});
+
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, '../public'), {
   etag: true,
@@ -81,4 +89,3 @@ app.listen(PORT, () => {
   console.log(`API available at http://localhost:${PORT}/api/deals`);
   console.log(`Using ${USE_MOCK ? 'MOCK' : 'REAL'} data source`);
 });
-

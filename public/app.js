@@ -54,7 +54,9 @@ class EndlessSlickdeals {
     this.errorElement.style.display = 'none';
     
     try {
-      const response = await fetch(`/api/deals?page=${this.currentPage}`);
+      const response = await fetch(`/api/deals?page=${this.currentPage}`, {
+        cache: 'no-store',
+      });
       
       if (!response.ok) {
         throw new Error('Failed to fetch deals');
