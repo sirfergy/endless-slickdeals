@@ -22,13 +22,15 @@ export class SlickdealsScraperService {
   private baseUrl = 'https://slickdeals.net/forums/forumdisplay.php?f=9';
 
   async fetchDeals(page: number = 1): Promise<Deal[]> {
-    const url = `${this.baseUrl}&page=${page}`;
+    const url = `${this.baseUrl}&page=${page}&_=${Date.now()}`;
 
     const response = await axios.get(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
       },
       timeout: 15000,
     });
